@@ -78,6 +78,8 @@ if(isset($_REQUEST["u_sub"]))
 ?>
 
 <html>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link type="text/css" rel="stylesheet" href="css/login.css"></link>
@@ -113,6 +115,9 @@ if(isset($_REQUEST["u_sub"]))
                                 <br>
                                     <input type="text" id="u_id" name="u_id" class="form-control" style="width:300px; margin-left: 66px;" placeholder="Enter Your User ID"><br>
                                     <input type="password" id="u_ps" name="u_ps" class="form-control" style="width:300px; margin-left: 66px;" placeholder="Enter Your Password"><br>
+                                    <br>
+                                    <div style="width:300px; margin-left: 66px;" class="g-recaptcha" data-sitekey="6LfHXxMlAAAAAL5fSlVZtmJeXNFm2vdtfTj35re4"></div>
+                                    <br>
                                     <input type="submit" id="u_sub" name="u_sub" value="Login" class="toggle btn btn-primary" style="width:100px; margin-left: 160px;"><br>
                                     <a href="signup.php" style="margin-left: 180px;">Sign Up </a>
                              </div>
@@ -124,3 +129,13 @@ if(isset($_REQUEST["u_sub"]))
         </form>  
        </body>
 </html>
+<script>
+$(document).on('click','#u_sub', function(){
+var response = grecaptcha.getResponse();
+if(response.length==0)
+{
+  alert("Please, verify first you are not a robot");
+  return false;
+}
+});
+</script>
