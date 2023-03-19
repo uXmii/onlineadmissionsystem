@@ -49,7 +49,7 @@ if(isset($_REQUEST["u_sub"]))
     }
 #created a passweord verify to verify the encrypted password
     if(mysqli_num_rows($res1)>0){
-         $row1 = mysqli_fetch_assoc($res1);
+        $row1 = mysqli_fetch_assoc($res1);
 
         $verify1 = password_verify($pwd, $row1['s_pwd']);
 
